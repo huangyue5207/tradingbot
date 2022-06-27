@@ -20,10 +20,9 @@ async def run():
     candles = await bfx.rest.get_public_candles('tBTCUSD', start=start, end=start + 24 * 60 * 60 * 30 * 1000, section='hist', tf='1h', limit=10000, sort=1)
     if candles:
       start = start + 24 * 60 * 60 * 30 * 1000
-      print ("Candles:")
-      [ print (c) for c in candles ]
+      print ("get candles: ", len(candles))
       [ fd.write(','.join(map(lambda x: str(x), c)) + '\n') for c in candles ]
-      
+      time.sleep(5)
   fd.close()
 
 asyncio.run(run())
