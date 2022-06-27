@@ -22,7 +22,7 @@ async def run():
       start = start + 24 * 60 * 60
       print ("Candles:")
       [ print (c) for c in candles ]
-      [ fd.write(','.join(c)) for c in candles ]
+      [ fd.write(','.join(map(lambda x: str(x), c))) for c in candles ]
       
   fd.close()
 
